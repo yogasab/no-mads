@@ -186,11 +186,11 @@ NoMads
         </div>
       </div>
       <div class="row">
-        <div class="col-12 text-center">
+        <div class="col-12 text-center font-weight-bold">
           <a href="#" class="btn btn-need-help px-4 mt-4 mx-1">
             I Need Help
           </a>
-          <a href="#" class="btn btn-get-started px-4 mt-4 mx-1">
+          <a href="#" class="btn btn-get-started px-4 mt-4 mx-1 ">
             Get Started
           </a>
         </div>
