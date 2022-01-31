@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
+use App\Http\Controllers\Detail\DetailController;
 use App\Http\Controllers\Home\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('', [HomeController::class, 'index'])->name('home');
+Route::get('/detail', [DetailController::class, 'index'])->name('detail');
 
 Route::prefix('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');

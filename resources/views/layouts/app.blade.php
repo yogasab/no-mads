@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>@yield('title')</title>
   @include('components.app.styles')
+  @stack('additional-styles')
 </head>
 
 <body>
@@ -22,6 +23,8 @@
   @include('components.app.footer')
 
   @include('components.app.script')
+
+  @stack('additional-script')
 </body>
 
 </html>
