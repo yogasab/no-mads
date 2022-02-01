@@ -44,7 +44,7 @@ Checkout
                 <tbody>
                   <tr>
                     <td>
-                      <img src="frontend/images/avatar-4.png" alt="" height="60" />
+                      <img src="{{ url('frontend/images/avatar-4.png') }}" alt="" height="60" />
                     </td>
                     <td class="align-middle">Angga Risky</td>
                     <td class="align-middle">CN</td>
@@ -52,13 +52,13 @@ Checkout
                     <td class="align-middle">Active</td>
                     <td class="align-middle">
                       <a href="#">
-                        <img src="frontend/images/ic_remove.png" alt="" />
+                        <img src="{{ url('frontend/images/ic_remove.png') }}" alt="" />
                       </a>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <img src="frontend/images/avatar-5.png" alt="" height="60" />
+                      <img src="{{ url('frontend/images/avatar-5.png') }}" alt="" height="60" />
                     </td>
                     <td class="align-middle">Galih Pratama</td>
                     <td class="align-middle">SG</td>
@@ -66,7 +66,7 @@ Checkout
                     <td class="align-middle">Active</td>
                     <td class="align-middle">
                       <a href="#">
-                        <img src="frontend/images/ic_remove.png" alt="" />
+                        <img src="{{ url('frontend/images/ic_remove.png') }}" alt="" />
                       </a>
                     </td>
                   </tr>
@@ -139,7 +139,7 @@ Checkout
             </p>
             <div class="bank">
               <div class="bank-item pb-3">
-                <img src="frontend/images/ic_bank.png" alt="" class="bank-image" />
+                <img src="{{ url('frontend/images/ic_bank.png') }}" alt="" class="bank-image" />
                 <div class="description">
                   <h3>PT Nomads ID</h3>
                   <p>
@@ -151,7 +151,7 @@ Checkout
                 <div class="clearfix"></div>
               </div>
               <div class="bank-item">
-                <img src="frontend/images/ic_bank.png" alt="" class="bank-image" />
+                <img src="{{ url('frontend/images/ic_bank.png') }}" alt="" class="bank-image" />
                 <div class="description">
                   <h3>PT Nomads ID</h3>
                   <p>
@@ -165,7 +165,8 @@ Checkout
             </div>
           </div>
           <div class="join-container">
-            <a href="#" class="btn btn-block btn-join-now mt-3 py-2">I Have Made Payment</a>
+            <a href="{{ route('checkout-success') }}" class="btn btn-block btn-join-now mt-3 py-2">I Have Made
+              Payment</a>
           </div>
           <div class="text-center mt-3">
             <a href="#" class="btn btn-danger btn-block text-white">Cancel Booking</a>

@@ -30,19 +30,24 @@ Details
             <p>Republic of Indonesia Raya</p>
             <div class="gallery">
               <div class="xzoom-container">
-                <img class="xzoom" id="xzoom-default" src="frontend/images/details-1.jpg"
-                  xoriginal="frontend/images/details-1.jpg" />
+                <img class="xzoom" id="xzoom-default" src="{{ url('frontend/images/details-1.jpg') }}"
+                  xoriginal="{{ url('frontend/images/details-1.jpg') }}" />
                 <div class="xzoom-thumbs">
-                  <a href="frontend/images/details-1.jpg"><img class="xzoom-gallery" width="128"
-                      src="frontend/images/details-1.jpg" xpreview="frontend/images/details-1.jpg" /></a>
-                  <a href="frontend/images/details-1.jpg"><img class="xzoom-gallery" width="128"
-                      src="frontend/images/details-1.jpg" xpreview="frontend/images/details-1.jpg" /></a>
-                  <a href="frontend/images/details-1.jpg"><img class="xzoom-gallery" width="128"
-                      src="frontend/images/details-1.jpg" xpreview="frontend/images/details-1.jpg" /></a>
-                  <a href="frontend/images/details-1.jpg"><img class="xzoom-gallery" width="128"
-                      src="frontend/images/details-1.jpg" xpreview="frontend/images/details-1.jpg" /></a>
-                  <a href="frontend/images/details-1.jpg"><img class="xzoom-gallery" width="128"
-                      src="frontend/images/details-1.jpg" xpreview="frontend/images/details-1.jpg" /></a>
+                  <a href="{{ url('frontend/images/details-1.jpg') }}"><img class="xzoom-gallery" width="128"
+                      src="{{ url('frontend/images/details-1.jpg') }}"
+                      xpreview="{{ url('frontend/images/details-1.jpg') }}" /></a>
+                  <a href="{{ url('frontend/images/details-1.jpg') }}"><img class="xzoom-gallery" width="128"
+                      src="{{ url('frontend/images/details-1.jpg') }}"
+                      xpreview="{{ url('frontend/images/details-1.jpg') }}" /></a>
+                  <a href="{{ url('frontend/images/details-1.jpg') }}"><img class="xzoom-gallery" width="128"
+                      src="{{ url('frontend/images/details-1.jpg') }}"
+                      xpreview="{{ url('frontend/images/details-1.jpg') }}" /></a>
+                  <a href="{{ url('frontend/images/details-1.jpg') }}"><img class="xzoom-gallery" width="128"
+                      src="{{ url('frontend/images/details-1.jpg') }}"
+                      xpreview="{{ url('frontend/images/details-1.jpg') }}" /></a>
+                  <a href="{{ url('frontend/images/details-1.jpg') }}"><img class="xzoom-gallery" width="128"
+                      src="{{ url('frontend/images/details-1.jpg') }}"
+                      xpreview="{{ url('frontend/images/details-1.jpg') }}" /></a>
                 </div>
               </div>
               <h2>Tentang Wisata</h2>
@@ -61,21 +66,21 @@ Details
               </p>
               <div class="features row">
                 <div class="col-md-4">
-                  <img src="frontend/images/ic_event.png" alt="" class="features-image" />
+                  <img src="{{ url('frontend/images/ic_event.png') }}" alt="" class="features-image" />
                   <div class="description">
                     <h3>Featured Ticket</h3>
                     <p>Tari Kecak</p>
                   </div>
                 </div>
                 <div class="col-md-4 border-left">
-                  <img src="frontend/images/ic_bahasa.png" alt="" class="features-image" />
+                  <img src="{{ url('frontend/images/ic_bahasa.png') }}" alt="" class="features-image" />
                   <div class="description">
                     <h3>Language</h3>
                     <p>Bahasa Indonesia</p>
                   </div>
                 </div>
                 <div class="col-md-4 border-left">
-                  <img src="frontend/images/ic_foods.png" alt="" class="features-image" />
+                  <img src="{{url('frontend/images/ic_foods.png')}}" alt="" class="features-image" />
                   <div class="description">
                     <h3>Foods</h3>
                     <p>Local Foods</p>
@@ -89,7 +94,7 @@ Details
           <div class="card card-details card-right">
             <h2>Members are going</h2>
             <div class="members my-2">
-              <img src="frontend/images/members.png" alt="" class="w-75" />
+              <img src="{{ url('frontend/images/members.png') }}" alt="" class="w-75" />
             </div>
             <hr />
             <h2>Trip Informations</h2>
@@ -113,7 +118,7 @@ Details
             </table>
           </div>
           <div class="join-container">
-            <a href="#" class="btn btn-block btn-join-now mt-3 py-2">Join Now</a>
+            <a href="{{ route('checkout') }}" class="btn btn-block btn-join-now mt-3 py-2">Join Now</a>
           </div>
         </div>
       </div>
