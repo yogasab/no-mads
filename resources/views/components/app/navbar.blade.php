@@ -29,18 +29,27 @@
         <li class="nav-item mx-md-2">
           <a class="nav-link" href="#">Testimonial</a>
         </li>
-      </ul>
 
-      <!-- Mobile button -->
-      <form class="form-inline d-sm-block d-md-none">
-        <button class="btn btn-login my-2 my-sm-0">Masuk</button>
-      </form>
-      <!-- Desktop Button -->
-      <form class="form-inline my-2 my-lg-0 d-none d-md-block">
-        <button class="btn btn-login btn-navbar-right my-2 my-sm-0 px-4">
-          Masuk
-        </button>
-      </form>
+        <!-- Mobile button -->
+        <form class="form-inline d-sm-block d-md-none">
+          <button class="btn btn-login my-2 my-sm-0">Login</button>
+        </form>
+        <!-- Desktop Button -->
+        {{-- <div class="my-2 my-lg-0 d-none d-md-block">
+          <a href="{{ route('login') }}" class="btn btn-login btn-navbar-right my-2 my-sm-0 px-4 text-center">
+            Login
+          </a>
+        </div> --}}
+        @if (Auth::check())
+        <li class="nav-item mx-md-2">
+          <a class="btn btn-block btn-login text-white nav-link">Hello, {{ Auth::user()->name }}</a>
+        </li>
+        @else
+        <li class="nav-item mx-md-2">
+          <a class="btn btn-block btn-login text-white nav-link" href="{{ route('login') }}">Login</a>
+        </li>
+        @endif
+      </ul>
     </div>
   </nav>
 </div>

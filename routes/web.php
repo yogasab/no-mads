@@ -1,10 +1,9 @@
 <?php
 
-use App\Http\Controllers\Admin\Dashboard\DashboardController;
-use App\Http\Controllers\Checkout\CheckoutController;
-use App\Http\Controllers\Detail\DetailController;
-use App\Http\Controllers\Home\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Home\HomeController;
+use App\Http\Controllers\Detail\DetailController;
+use App\Http\Controllers\Checkout\CheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('layouts.admin');
-// });
 
 Route::get('', [HomeController::class, 'index'])->name('home');
 Route::get('/detail', [DetailController::class, 'index'])->name('detail');
@@ -29,3 +25,5 @@ Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('c
 Route::prefix('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 });
+
+require __DIR__ . '/auth.php';
