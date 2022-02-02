@@ -29,27 +29,35 @@
         <li class="nav-item mx-md-2">
           <a class="nav-link" href="#">Testimonial</a>
         </li>
-
-        <!-- Mobile button -->
-        <form class="form-inline d-sm-block d-md-none">
-          <button class="btn btn-login my-2 my-sm-0">Login</button>
-        </form>
-        <!-- Desktop Button -->
-        {{-- <div class="my-2 my-lg-0 d-none d-md-block">
-          <a href="{{ route('login') }}" class="btn btn-login btn-navbar-right my-2 my-sm-0 px-4 text-center">
-            Login
-          </a>
-        </div> --}}
-        @if (Auth::check())
-        <li class="nav-item mx-md-2">
-          <a class="btn btn-block btn-login text-white nav-link">Hello, {{ Auth::user()->name }}</a>
-        </li>
-        @else
-        <li class="nav-item mx-md-2">
-          <a class="btn btn-block btn-login text-white nav-link" href="{{ route('login') }}">Login</a>
-        </li>
-        @endif
       </ul>
+
+      @guest
+      <!-- Mobile button -->
+      <form class="form-inline d-sm-block d-md-none">
+        <button class="btn btn-login my-2 my-sm-0" type="button"
+          onclick="event.preventDefault(); location.href='{{ route('login') }}';">Login</button>
+      </form>
+      {{-- Desktop button --}}
+      <form class="form-inline my-2 my-lg-0 d-none d-md-block">
+        <button class="btn btn-login btn-navbar-right my-2 my-sm-0 px-4" type="button"
+          onclick="event.preventDefault(); location.href='{{ route('login') }}';">Login</button>
+      </form>
+      @endguest
+
+      @auth
+      {{-- Mobile Button --}}
+      <form action="{{ route('logout') }}" method="POST" class="form-inline d-sm-block d-md-none">
+        @csrf
+        <button type="submit" class="btn btn-danger my-2 my-sm-0">Logout</button>
+      </form>
+      {{-- Desktop button --}}
+      <form class="form-inline my-2 my-lg-0 d-none d-md-block" action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button class="btn btn-danger btn-navbar-right my-2 my-sm-0 px-4" type="submit">Logout</button>
+      </form>
+      @endauth
+
+      {{-- Desktop Button --}}
     </div>
   </nav>
 </div>
