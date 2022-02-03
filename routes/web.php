@@ -6,6 +6,7 @@ use App\Http\Controllers\Detail\DetailController;
 use App\Http\Controllers\Checkout\CheckoutController;
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\Travel\TravelPackageController;
+use App\Http\Controllers\Admin\TravelGallery\TravelGalleryController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -28,6 +29,7 @@ Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('c
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::resource('travel-package', TravelPackageController::class);
+    Route::resource('travel-gallery', TravelGalleryController::class);
 });
 
 // Auth::routes(['verify' => true]);

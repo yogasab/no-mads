@@ -6,6 +6,8 @@ use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\TravelGallery;
 
 class TravelPackage extends Model
 {
@@ -41,5 +43,10 @@ class TravelPackage extends Model
         static::updating(function ($travel_package) {
             $travel_package->slug = Str::slug($travel_package->title);
         });
+    }
+
+    public function travel_galleries(): HasMany
+    {
+        return $this->hasMany(TravelGallery::class);
     }
 }

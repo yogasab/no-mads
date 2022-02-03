@@ -23,7 +23,7 @@
       <span>Travel Package</span></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" href="{{ route('travel-gallery.index') }}">
       <i class="fas fa-fw fa-images"></i>
       <span>Galleries Travel</span></a>
   </li>
