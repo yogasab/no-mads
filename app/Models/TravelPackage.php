@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class TravelPackage extends Model
 {
@@ -25,4 +26,20 @@ class TravelPackage extends Model
     ];
 
     protected $hidden = [];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    protected static function booted()
+    {
+        static::creating(function ($travel_package) {
+            $travel_package->slug = Str::slug($travel_package->title);
+        });
+
+        static::updating(function ($travel_package) {
+            $travel_package->slug = Str::slug($travel_package->title);
+        });
+    }
 }

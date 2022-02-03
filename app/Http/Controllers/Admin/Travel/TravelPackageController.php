@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Travel;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Travel\StoreTravelPackageRequest;
 use App\Models\TravelPackage;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,7 @@ class TravelPackageController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.travel-package.create');
     }
 
     /**
@@ -37,9 +38,14 @@ class TravelPackageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTravelPackageRequest $request)
     {
-        //
+        $validatedData = $request->all();
+        TravelPackage::create($validatedData);
+
+        return redirect()
+            ->route('travel-package.index')
+            ->with('success', 'Travel Package created successfully');
     }
 
     /**
@@ -50,7 +56,6 @@ class TravelPackageController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -59,9 +64,11 @@ class TravelPackageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(TravelPackage $travel_package)
     {
-        //
+        return view('pages.admin.travel-package.edit', [
+            'travel' => $travel_package
+        ]);
     }
 
     /**
@@ -71,9 +78,13 @@ class TravelPackageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, TravelPackage $travel_package)
     {
-        //
+        $travel_package->update($request->all());
+
+        return redirect()
+            ->route('travel-package.index')
+            ->with('success', 'Travel Package updated successfully');
     }
 
     /**
@@ -82,8 +93,12 @@ class TravelPackageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(TravelPackage $travel_package)
     {
-        //
+        $travel_package->delete();
+
+        return redirect()
+            ->route('travel-package.index')
+            ->with('success', 'Travel Package deleted successfully');
     }
 }

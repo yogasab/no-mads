@@ -50,6 +50,7 @@
 
   @include('components.admin.scripts')
 
+  @stack('ckeditor-script')
 </body>
 
 </html>
