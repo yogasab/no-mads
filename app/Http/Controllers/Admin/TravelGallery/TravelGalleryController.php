@@ -18,7 +18,7 @@ class TravelGalleryController extends Controller
      */
     public function index()
     {
-        $travel_galleries = TravelGallery::with(['travel_package'])->get();
+        $travel_galleries = TravelGallery::with(['travel_package'])->latest()->get();
 
         return view('pages.admin.travel-gallery.index', [
             'travel_galleries' => $travel_galleries
