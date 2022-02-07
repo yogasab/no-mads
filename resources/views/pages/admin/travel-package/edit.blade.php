@@ -29,6 +29,14 @@
           @enderror
         </div>
         <div class="form-group">
+          <label for="country">Country</label>
+          <input type="text" name="country" class="form-control @error('country') is-invalid @enderror" id="country"
+            placeholder="Enter a country" value="{{ old('country') ?: $travel->country }}">
+          @error('country')
+          <div class="alert alert-danger mt-2">{{ $message }}</div>
+          @enderror
+        </div>
+        <div class="form-group">
           <label for="description">Description</label>
           <textarea class="form-control @error('description') is-invalid @enderror" id="editor" rows="3"
             name="description">{{ old('description') ?: $travel->description }}</textarea>

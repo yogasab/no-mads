@@ -24,7 +24,8 @@ class TravelPackage extends Model
         'departure_date',
         'duration',
         'type',
-        'price'
+        'price',
+        'country'
     ];
 
     protected $hidden = [];
@@ -47,6 +48,6 @@ class TravelPackage extends Model
 
     public function travel_galleries(): HasMany
     {
-        return $this->hasMany(TravelGallery::class);
+        return $this->hasMany(TravelGallery::class, 'travel_packages_id', 'id');
     }
 }
