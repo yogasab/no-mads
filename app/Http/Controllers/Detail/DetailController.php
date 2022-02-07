@@ -3,12 +3,19 @@
 namespace App\Http\Controllers\Detail;
 
 use App\Http\Controllers\Controller;
+use App\Models\TravelPackage;
 use Illuminate\Http\Request;
 
 class DetailController extends Controller
 {
-    public function index()
+    public function index(TravelPackage $travel_package)
     {
-        return view('pages.details');
+        $travel_package = TravelPackage::with(['travel_galleries'])
+            ->whereSlug($travel_package->slug)
+            ->firstOrFail();
+
+        return view('pages.details', [
+            'travel' => $travel_package
+        ]);
     }
 }

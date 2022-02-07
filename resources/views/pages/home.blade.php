@@ -60,8 +60,8 @@ NoMads
         @foreach ($travels as $travel)
         <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="card-travel text-center d-flex flex-column"
-            style="background-image: url('{{ $travel->travel_galleries->count() ? Storage::url($travel->travel_galleries->first()->image) : '' }}')">
-            <div class="travel-country">{{ $travel->location }}</div>
+            style="background-image: url('{{ $travel->travel_galleries->count() ? Storage::url($travel->travel_galleries->first()->image) : 'https://www.riobeauty.co.uk/images/product_image_not_found.gif' }}')">
+            <div class="travel-country">{{ $travel->title }}</div>
             <div class="travel-location">{{ $travel->location }}</div>
             <div class="travel-button mt-auto">
               <a href="{{ route('detail', $travel->slug) }}" class="btn btn-travel-details px-4">
