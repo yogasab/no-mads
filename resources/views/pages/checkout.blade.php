@@ -178,7 +178,8 @@ Checkout
             </a>
           </div>
           <div class="text-center mt-3">
-            <a href="#" class="btn btn-danger btn-block text-white">Cancel Booking</a>
+            <a href="{{ route('detail', $transaction->travel_package->slug) }}"
+              class="btn btn-danger btn-block text-white">Cancel Booking</a>
           </div>
         </div>
       </div>
