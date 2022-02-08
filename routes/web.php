@@ -23,8 +23,21 @@ use Illuminate\Support\Facades\Auth;
 
 
 Route::get('', [HomeController::class, 'index'])->name('home');
+
 Route::get('/detail/{travel_package}', [DetailController::class, 'index'])->name('detail');
-Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+
+Route::get('/checkout/{transaction}', [CheckoutController::class, 'index'])
+    ->name('checkout');
+Route::post('/checkout/{travel_package}', [CheckoutController::class, 'store'])
+    ->name('checkout.store');
+Route::post('/checkout/add-member/{transaction}', [CheckoutController::class, 'addMember'])
+    ->name('checkout.add-member');
+Route::get('/checkout/remove-member/{transaction_detail}', [CheckoutController::class, 'removeMember'])
+    ->name('checkout.remove-member');
+Route::get('/checkout/confirm/{transaction}', [CheckoutController::class, 'success'])
+    ->name('checkout.success');
+
+
 Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout-success');
 
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {

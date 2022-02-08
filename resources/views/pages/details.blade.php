@@ -95,13 +95,13 @@ Details
               </tr>
               <tr>
                 <th width="50%">Price</th>
-                <td width="50%" class="text-right">Rp{{ number_format($travel->price) }}/person</td>
+                <td width="50%" class="text-right">${{ number_format($travel->price) }},00/person</td>
               </tr>
             </table>
           </div>
           <div class="join-container">
             @auth
-            <form action="" method="POST">
+            <form action="{{ route('checkout.store', $travel->slug) }}" method="POST">
               @csrf
               <button type="submit" class="btn btn-join-now btn-block mt-3 py-2">
                 Join Now

@@ -48,7 +48,7 @@
               <td>{{ $travel->location }}</td>
               <td>{{ $travel->type }}</td>
               <td>{{ $travel->departure_date }}</td>
-              <td>Rp{{ number_format($travel->price) }}K</td>
+              <td>${{ number_format($travel->price) }},00</td>
               <td>
                 <a href="{{ route('travel-package.edit', $travel->slug) }}" class="btn btn-info">
                   Edit
