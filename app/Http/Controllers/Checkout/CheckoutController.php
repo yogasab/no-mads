@@ -8,10 +8,13 @@ use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use App\Models\TravelPackage;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Container\RewindableGenerator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Midtrans\Config;
+use Midtrans\Snap;
 use Psy\Readline\Transient;
 
 class CheckoutController extends Controller
@@ -103,15 +106,45 @@ class CheckoutController extends Controller
             'user'
         ])->findOrFail($transaction->id);
         $transaction->transaction_status = 'PENDING';
-
         $transaction->save();
-        Mail::to($transaction->user->email)
-            ->send(new TransactionSuccess(
-                $transactions,
-                $transactions->travel_package->title,
-                $transactions->travel_package->departure_date
-            ));
 
-        return view('pages.checkout-success');
+        Config::$serverKey = config('midtrans.serverKey');
+        Config::$isProduction = config('midtrans.isProduction');
+        Config::$isSanitized = config('midtrans.isSanitized');
+        Config::$is3ds = config('midtrans.is3ds');
+
+        // Required
+        $params = [
+            'transaction_details' => [
+                'order_id' => 'NO-MADS-' . mt_rand(0, 999),
+                'gross_amount' => $transaction->transaction_total,
+            ],
+            'customer_details' => [
+                'first_name' => $transaction->user->name,
+                'email' => $transaction->user->email
+            ],
+            'enabled_payments' => [
+                'gopay'
+            ],
+            'vtweb' => []
+        ];
+
+        try {
+            // Get Snap Payment Page URL
+            $paymentUrl = Snap::createTransaction($params)->redirect_url;
+            Mail::to($transaction->user->email)
+                ->send(new TransactionSuccess(
+                    $transactions,
+                    $transactions->travel_package->title,
+                    $transactions->travel_package->departure_date
+                ));
+            // Redirect to Snap Payment Page
+            return redirect($paymentUrl);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
+
+        // return view('pages.checkout-success');
     }
 }

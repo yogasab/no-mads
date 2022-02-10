@@ -127,7 +127,7 @@ Checkout
               </tr>
               <tr>
                 <th width="50%">Sub Total</th>
-                <td width="50%" class="text-right">$ 280,00</td>
+                <td width="50%" class="text-right">$ {{ $transaction->transaction_total }},00</td>
               </tr>
               <tr>
                 <th width="50%">Total (+Unique)</th>
