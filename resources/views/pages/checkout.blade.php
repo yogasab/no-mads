@@ -142,34 +142,9 @@ Checkout
             <h2>Payment Instructions</h2>
             <p class="payment-instructions">
               Please complete your payment before to continue the wonderful
-              trip
+              trip using GO-PAY redirected page.
             </p>
-            <div class="bank">
-              <div class="bank-item pb-3">
-                <img src="{{ url('frontend/images/ic_bank.png') }}" alt="" class="bank-image" />
-                <div class="description">
-                  <h3>PT Nomads ID</h3>
-                  <p>
-                    0881 8829 8800
-                    <br />
-                    Bank Central Asia
-                  </p>
-                </div>
-                <div class="clearfix"></div>
-              </div>
-              <div class="bank-item">
-                <img src="{{ url('frontend/images/ic_bank.png') }}" alt="" class="bank-image" />
-                <div class="description">
-                  <h3>PT Nomads ID</h3>
-                  <p>
-                    0899 8501 7888
-                    <br />
-                    Bank HSBC
-                  </p>
-                </div>
-                <div class="clearfix"></div>
-              </div>
-            </div>
+            <img src="{{ url('frontend/images/go-pay.jpg') }}" alt="" class="w-50">
           </div>
           <div class="join-container">
             <a href="{{ route('checkout.success', $transaction->id) }}" class="btn btn-block btn-join-now mt-3 py-2">I

@@ -19,7 +19,7 @@ class TransactionSuccess extends Mailable
      *
      * @return void
      */
-    public function __construct($transaction, $title, $departure_date)
+    public function __construct($transaction, $title = 'Title', $departure_date = '2022-12-12')
     {
         $this->transaction = $transaction;
         $this->title = $title;

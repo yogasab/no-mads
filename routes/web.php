@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\Dashboard\DashboardController;
 use App\Http\Controllers\Admin\Transaction\TransactionController;
 use App\Http\Controllers\Admin\Travel\TravelPackageController;
 use App\Http\Controllers\Admin\TravelGallery\TravelGalleryController;
+use App\Http\Controllers\Midtrans\MidtransController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -48,4 +49,9 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 });
 
 // Auth::routes(['verify' => true]);
+// Midtrans Routes
+Route::post('/midtrans/callback', [MidtransController::class, 'notificationHandler']);
+Route::get('/midtrans/finish', [MidtransController::class, 'finishRedirect']);
+Route::get('/midtrans/unfinish', [MidtransController::class, 'unfinishRedirect']);
+Route::get('/midtrans/error', [MidtransController::class, 'errorRedirect']);
 require __DIR__ . '/auth.php';

@@ -116,7 +116,7 @@ class CheckoutController extends Controller
         // Required
         $params = [
             'transaction_details' => [
-                'order_id' => 'NO-MADS-' . mt_rand(0, 999),
+                'order_id' => 'NO-MADS-' . $transaction->id,
                 'gross_amount' => $transaction->transaction_total,
             ],
             'customer_details' => [
@@ -132,12 +132,12 @@ class CheckoutController extends Controller
         try {
             // Get Snap Payment Page URL
             $paymentUrl = Snap::createTransaction($params)->redirect_url;
-            Mail::to($transaction->user->email)
-                ->send(new TransactionSuccess(
-                    $transactions,
-                    $transactions->travel_package->title,
-                    $transactions->travel_package->departure_date
-                ));
+            // Mail::to($transaction->user->email)
+            //     ->send(new TransactionSuccess(
+            //         $transactions,
+            //         $transactions->travel_package->title,
+            //         $transactions->travel_package->departure_date
+            //     ));
             // Redirect to Snap Payment Page
             return redirect($paymentUrl);
         } catch (Exception $e) {
